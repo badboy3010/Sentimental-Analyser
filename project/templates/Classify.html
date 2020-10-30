@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+{%  load static %}
+
+<html>
+{% csrf_token %}
+     <head>
+      <title>Classify</title>
+      <meta charset="utf-8">
+      <script src="{%static 'js/jquery.js'%}"></script>
+      <link rel="stylesheet" href="{%static 'css/bootstrapmin.css'%}" />
+      <script src="{%static 'js/bootstrapmin.js'%}"></script>
+      <link rel="shortcut icon" href="{% static 'k53.png' %}" />
+      <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css"/>
+      <link href="{% static 'css/style.css' %}"rel="stylesheet" type="text/css"/>
+      <link href="{% static 'css/global/global.css' %}" rel="stylesheet" type="text/css"/>
+      <style>
+
+             .mytxtdiv{
+                position:fixed;
+                top: 16.22%;
+                left: 65%;
+                width: 450px;
+
+             }
+             .my{
+                 font-family: Montserrat, sans-serif;
+                 font-size: 1.5rem;
+                 padding: 10px;
+                 max-height:13rem;
+                 overflow:auto;
+             }
+             .insidediv{
+                width:100%;
+                min-height: 100%;
+
+                height: 25rem;
+             }
+
+             tr:nth-child(even) {
+              background-color: #eeefff;
+              }
+
+             .rtt{
+                 height: 4rem;
+             }
+
+             table.gridtable {
+                    position:absolute;
+                    font-family: helvetica,arial,sans-serif;
+                    font-size:14px;
+                    color:#333333;
+                    width:100%;
+                    border-width: 1px;
+                    border-color: #666666;
+                    border-collapse: collapse;
+                    text-align: center;
+             }
+
+             table.gridtable th {
+                    border-width: 1px;
+                    padding: 8px;
+                    background-color: #eeefff;
+
+             }
+             table.gridtable td {
+                    border-width: 1px;
+                    padding: 8px;
+
+             }
+             td:hover {
+                    background-color: #ffff99;
+
+             }
+
+             .selected{
+                     background-color: #278efc ! important;
+                     color: white;
+             }
+             .table-wrapper-scroll-y{
+                position: fixed;
+                margin-left:-7%;
+                width:61%;
+                margin-top:0%
+             }
+
+
+             .my-custom-scrollbar {
+
+                height: 32rem;;
+                overflow: auto;
+            }
+
+         </style>
+     </head>
+{% include 'nav.html' %}
+     <body onload="loadCSV()" style="background: url({% static '52.jpg' %}) ">
+
+         <div class="container ">
+
+            <div class="center-block g-text-center--xs g-margin-t-5--xs g-margin-b-30--xs">
+                <h2 class="g-font-size-40--xs g-font-size-40--sm g-font-size-44--md g-color--heading " >Sentiment Analysis</h2>
+                <center><div class=" g-hor-divider__solid--ted g-width-350--xs g-width-300--lg"></div></center>
+            </div>
+            <div class="mytxtdiv">
+                <div>
+                    <div style="background-color: #eeefff">
+                        <center>
+                            <h2  class="g-color--heading ">Classification Result</h2>
+                        </center>
+                    </div>
+                    <div class="insidediv">
+                            <span> </span>
+                            <div class="my"> <span  id="0"></span></div>
+
+                            <div class="my "> <span  id="1"></span></div>
+
+                            <div class="my "> <span  id="2"></span></div>
+
+
+                            <div class="my "> <span  id="3"></span></div>
+
+                            <div class="my "> <span  id="4"></span></div>
+                            <div class="my "> <span  id="5"></span></div>
+
+                    </div>
+                </div>
+            </div>
+            <div  class="table-responsive table-wrapper-scroll-y" id="table-cont">
+                <div class=" my-custom-scrollbar">
+                    <table class="gridtable table-striped"id="tableMain" >
+                        <thead >
+                            <tr>
+                                <th style="font-size:17px;" class="g-color--heading "><center>Retrieved Comments to Classify</center></th>
+                            </tr>
+                        </thead>
+                        <tbody >
+
+
+                        </tbody>
+
+                    </table>
+                </div>
+           </div>
+         </div>
+
+         <script>
+            function loadCSV(){
+              $.ajax({
+               url:"{% static 'output.csv'%}",
+               dataType:"text",
+               success:function(data)
+                   {
+                        var employee_data = data.split(/\r?\n|\r/);
+                        var table_data = '';
+                        for(var count = 0; count<employee_data.length; count++)
+                        {
+
+                           table_data += '<tr><td align="left" >'+employee_data[count]+'</td></tr>';
+                        }
+                        $(table_data).appendTo('#tableMain');
+                   }
+              });
+               //--------------------------------------------------------------------------------
+              //to fix the thead
+              var tableCont = document.querySelector('#table-cont')
+
+              function scrollHandle (e){
+                var scrollTop = this.scrollTop;
+                this.querySelector('thead').style.transform = 'translateY(' + scrollTop + 'px)';
+              }
+
+              tableCont.addEventListener('scroll',scrollHandle)
+
+              //--------------------------------------------------------------------------------
+
+
+            }
+         </script>
+         <script>
+            $('#tableMain tbody').on('click', 'tr', function() {
+                            //get row contents into an array
+                            $(this).addClass('selected').siblings().removeClass('selected');
+                            var tableData = $(this).children("td").map(function() {
+                                return $(this).text();
+                            }).get();
+                            var td=tableData[0];
+                            $.ajax({
+                                type: "POST",
+                                url: '{% url 'senti'%}',
+
+                                data: {csrfmiddlewaretoken: '{{ csrf_token }}',
+                                      'text':td },   /* Passing the text data */
+                                success:  function(response){
+                                        var list = response
+                                        JSON.parse(list)
+
+                                        $.each(JSON.parse(list),function(i,item)
+                                        {
+                                            var x=5;
+                                            if(i<3)
+                                            {
+                                                x-=i;
+                                                document.getElementById(x).style.display ='none';
+                                            }
+                                            if(i==0)
+                                                $( "#" + i ).text(item);
+                                            if(i==1)
+                                            {
+                                                $( "#" + i ).text(item);
+                                            }
+                                            if(i==2)
+                                            {
+                                                $( "#" + i ).text(item);
+                                            }
+                                            if(i==3)
+                                            {
+                                                document.getElementById("3").style.display ='inline';
+                                                $( "#" + i ).text(item);
+                                            }
+                                            if(i==4)
+                                            {
+                                                document.getElementById("4").style.display ='inline';
+                                                $( "#" + i ).text(item);
+                                            }
+                                            if(i==5)
+                                            {
+                                                document.getElementById("5").style.display ='inline';
+                                                $( "#" + i ).text(item);
+                                            }
+                                        });
+                                 }
+
+
+                            })
+            });
+
+         </script>
+     </body>
+</html>

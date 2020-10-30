@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" class="no-js">
+    <!-- Begin Head -->
+    <head>
+        <!-- Basic -->
+        <title>About</title>
+        <!-- Vendor Styles -->
+        <link rel="shortcut icon" href="{% static 'k53.png' %}" />
+        <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css"/>
+        <!-- Theme Styles -->
+        <link href="{% static 'css/style.css' %}"rel="stylesheet" type="text/css"/>
+        <link href="{% static 'css/global/global.css' %}" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="{% static 'css/cards.css' %}" type="text/css"/>
+        <!-- Favicon -->
+    </head>
+    <body style="background: url({% static '52.jpg' %}) ">
+    {% include 'nav.html' %}
+        <!--========== PAGE CONTENT ==========-->
+        <div class="container g-padding-y-80--xs g-padding-y-20--sm  g-padding-l-100-lg g-padding-r-100--lg ">
+            <div>
+                <center>
+                    <h2 class="g-font-size-30--xs g-font-size-40--md ">About Sentiment Analysis</h2>
+                    <div class=" g-hor-divider__solid--ted g-width-150--xs g-width-150--lg g-margin-b-25--xs"></div>
+                </center>
+                <p style="text-align: justify; color: #ffffff" class="g-font-size-18--xs g-margin-b-45--xs  g-font-size-30--lg">Sentiment Analysis is the most common text classification tool that analyses phrases or reviews and tells whether the underlying sentiment is positive, negative our neutral. </p>
+            </div>
+            <div>
+                <center>
+                    <h2 class="g-font-size-30--xs g-font-size-40--md ">Under The Guidance of</h2>
+                    <div class=" g-hor-divider__solid--ted g-width-200--xs g-width-200--lg g-margin-b-35--xs"></div>
+                 </center>
+                 <div style="margin-left: 22rem" class="box">
+                     <div class="card g-margin-b-65--xs">
+                        <div class="imgBx">
+                            <img src="{% static '536.jpg' %}" alt="images">
+                        </div>
+                        <div class="details">
+                            <h2  class="g-font-size-18--xs">Dr Kavitha Mahesh<br><span>B.Sc., MCA, Ph.D</span></h2>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+            <div>
+                <center>
+                    <h2 class="g-font-size-30--xs g-font-size-40--md ">Project Team</h2>
+                    <div class=" g-hor-divider__solid--ted g-width-100--xs g-width-100--lg g-margin-b-35--xs"></div>
+                </center>
+                <div class="box">
+                    <div class="card g-margin-b-65--xs">
+                        <div class="imgBx">
+                            <img src="{% static 'nish.jpg' %}" alt="images">
+                        </div>
+                        <div class="details">
+                            <h2  class="g-font-size-18--xs">Nishmitha A<br><span>CSE 4SO16CS002</span></h2>
+                        </div>
+                    </div>
+                    <div class="card g-margin-b-65--xs">
+                        <div class="imgBx">
+                            <img src="{% static 'Screenshot%20(108).png' %}" alt="images">
+                        </div>
+                        <div class="details">
+                            <h2  class="g-font-size-18--xs">Gowda Karthik Balgopal<br><span>CSE 4SO16CS036</span></h2>
+                        </div>
+                    </div>
+                    <div class="card g-margin-b-65--xs">
+                        <div class="imgBx">
+                            <img src="{% static 'kaus.jpg' %}" alt="images">
+                        </div>
+                        <div class="details">
+                            <h2  class="g-font-size-18--xs">Kausalya K Naik<br><span>CSE 4SO16CS048</span></h2>
+                        </div>
+                    </div>
+                    <div class="card g-margin-b-65--xs">
+                        <div class="imgBx">
+                            <img src="{% static 'mraa.jpg' %}" alt="images">
+                        </div>
+                        <div class="details">
+                            <h2  class="g-font-size-18--xs">Mranali Gourish Gaonkar<br><span>CSE 4SO16CS067</span></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--========= END PAGE CONTENT ===========-->
+
+
+    </body>
+    <!-- End Body -->
+
+</html>

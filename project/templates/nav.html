@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <link href="{% static 'css/style.css' %}"rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/global/global.css' %}" rel="stylesheet" type="text/css"/>
+
+    <style>
+        .nav{
+            position: fixed;
+            top: 0px;
+            width:100%;
+            z-index: 44;
+            background-color: transparent;
+        }
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+
+        }
+
+        li {
+          float: right;
+          border-left: 5px solid #fff;
+          width: 8rem;
+        }
+
+
+
+        li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+          background-color:#73cdf6 ;
+
+        }
+
+        .active {
+          background-color: #566573;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <div class="nav">
+        <ul id="nav">
+          <span><img style="height:4rem"  src="{% static 'try4.png' %}"></span>
+            <li class="nav-item {{ about_page }}">
+                <a href="{% url 'about' %}"><img src="{% static 'about.svg' %}"></a>
+            </li>
+            <li class="nav-item {{ home_page }}">
+              <a  href="{% url 'index' %}"><img src="{% static 'home.svg' %}"></a>
+          </li>
+        </ul>
+    </div>
+</nav>
+</body>
+</html>

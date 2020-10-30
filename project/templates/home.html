@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" class="no-js">
+    <!-- Begin Head -->
+    <head>
+        <!-- Basic -->
+        <link rel="shortcut icon" href="{% static 'k53.png' %}" />
+        <title>SentimentAnalysis</title>
+
+        <!-- Web Fonts -->
+        <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css"/>
+        <link href="{% static 'css/style.css' %}"rel="stylesheet" type="text/css"/>
+        <link href="{% static 'css/global/global.css' %}" rel="stylesheet" type="text/css"/>
+        
+        
+        <style>
+
+            .mytext{
+               font: 20px arial,sans-serif;
+                height: 3.5rem !important;
+                /*box-shadow: 0 0 px grey;*/
+                border: 2px solid #17202A;
+                border-radius: 75px;
+                padding-left: 3.5rem !important;
+                background: url({% static 'search-13-24.png' %});
+                background-repeat: no-repeat;
+                background-position: 18px;
+
+
+
+            }
+            .mybtn{
+                background-color:#34495E  ;
+                border:1px;
+                border-color:#D8D8D8;
+                color: white;
+                letter-spacing: 1px;
+                font-size: 23px;
+                padding: 14px;
+                width: 13rem;
+
+            }
+            .btn-primary {
+
+              background-color:#34495E ;
+              padding: 14px;
+
+            }
+
+            .rnd{
+                border-radius: 75px;
+            }
+            .myfile1{
+                font: 20px arial,sans-serif;
+                height: 3.5rem !important;
+                /*box-shadow: 0 0 px grey;*/
+                border: 2px solid #17202A;
+                border-radius: 75px;
+                padding-left: 3.5rem !important;
+                background: url({% static 'document-24.png'%});
+                background-repeat: no-repeat;
+                background-position: 18px;
+
+            }
+            .fileUpload {
+                position: relative;
+                overflow: hidden;
+                margin: 10px;
+                width: 10rem;
+
+            }
+            .fileUpload input.upload {
+                position: absolute;
+                top: 0;
+                right: 0;
+                margin: 0;
+
+                padding: 0;
+                height: 3.5rem;
+                font-size: 20px;
+                cursor: pointer;
+                opacity: 0;
+                filter: alpha(opacity=0);
+
+            }
+        input[type=text]:hover{
+                box-shadow: 0 0 7px #17202A;
+            border: 0;
+            }
+        input[type=text]:focus{
+                box-shadow: 0 0 7px #17202A;
+
+            }
+            input:-webkit-autofill,
+            input:-webkit-autofill:hover,
+            input:-webkit-autofill:focus {
+                -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+              }
+        </style>
+       
+ 
+    </head>
+    <!-- End Head -->
+    
+    <!-- Body -->
+    <body >
+    {% include 'nav.html' %}
+         <!--========== HEADER ==========-->
+        <!--========== SWIPER SLIDER ==========-->
+        <div class="s-swiper js__swiper-one-item">
+            <!-- Swiper Wrapper -->
+            <div class="swiper-wrapper">
+
+                <div class="g-fullheight--xs g-bg-position--center swiper-slide" style="background: url({% static '1.jpg'%});">
+                    <div class="container g-text-center--xs g-ver-center--xs">
+        <!-- Sentment Analysis -->
+        
+            <div style="color: black"  class="g-container--md">
+                <div class="center-block g-text-center--xs g-margin-t-5--xs g-margin-b-80--xs">
+                    
+                    <h2 class="g-font-size-40--xs g-font-size-50--sm g-font-size-60--md g-color--heading " >Sentiment Analysis</h2>
+                    <center><div class=" g-hor-divider__solid--ted g-width-350--xs g-width-400--lg g-margin-b-25--xs"></div></center>
+
+                </div>
+              
+                <form autocomplete="off" class="center-block g-width-500--xs g-width-600--md" method="POST" action="/values/" enctype="multipart/form-data" >
+                   {% csrf_token %}
+                     <div class="g-margin-b-30--xs">
+                        <input name="text1" id="fee" type="text" class="mytext g-width-550--md"  required="true"  placeholder="Enter The YouTube URL or Text">
+                    </div>
+                    <div class="g-margin-b-40--xs">
+                        <input  id="uploadFile" placeholder="Choose File (.csv or .txt)" class="myfile1 g-width-450--md g-width-400--xs" disabled="disabled" />
+                        <div class="fileUpload btn rnd btn-primary">
+                            <span style="font-size: 24px;">Upload</span>
+                            <input name="myfile" type="file" accept=".csv,.txt" class="upload rnd" id="uploadBtn" />
+                        </div>
+                       <!-- <input name="myfile" type="file">-->
+                    </div>
+
+                    <div class="g-text-center--xs">
+                       <button type="submit"  class="mybtn rnd btn btn-primary  g-padding-x-50--xs g-margin-b-20--xs">SUBMIT</button>
+                    </div>
+                  <!--  <div class="g-margin-b-30--xs">
+                        <input type="text" class="mytext g-width-550--lg"   placeholder="Enter any YouTube URL to Search">
+                    </div>
+                    
+                    <div class="g-text-center--xs">
+                       <button type="submit" class="text-uppercase s-btn s-btn--md s-btn--dark-bg g-radius--50 g-padding-x-70--xs g-margin-b-20--xs"><strong >Search</strong></button>
+                    </div> -->
+                </form>
+            </div>
+                </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+        <!--========== END SWIPER SLIDER ==========-->
+
+       
+        <!-- End  -->
+         <script>
+
+
+            document.getElementById("uploadBtn").onchange = function () {
+
+                if(this.files[0].size > 3145728){
+                   alert("File is too big!");
+                   this.value = "";
+                }
+                else{
+                    var fileName = this.value.replace("C:\\fakepath\\", "");
+                document.getElementById("uploadFile").value = fileName;
+                document.getElementById("fee").style.color='#808080';
+                document.getElementById("fee").value= "Enter The YouTube URL or Text";
+                document.getElementById("fee").disabled="disabled";
+                }
+        };
+
+
+
+
+
+
+    </script>
+
+
+
+
+    </body>
+    <!-- End Body -->
+</html>
