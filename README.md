@@ -9,7 +9,7 @@ This tool is to predict the sentiment of the sentence whether it is Positive, Ne
 There are three inputs which we can provide one at a time:
 1) Any Youtube URL, which will automatically fetch comments from the Youtube video.
 2) Upload any .txt or .csv file which contains any reviews or comments.
-3) Any text to classify (Hindi or English)
+3) Any Hindi or English Written text to classify (Even English written Hindi language text is also classified as shown in output).
 
 # Outputs
 It will classify a sentence whether it is Positive, Negative or Neutral with a score assigned to it.
