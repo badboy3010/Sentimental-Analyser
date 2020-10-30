@@ -1,2 +1,2 @@
 # Sentimental-Analyser
-![Screenshot](projectSenti/Screenshot865.png)
+![Screenshot](finalproject/Screenshot865.png)
