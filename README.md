@@ -17,6 +17,6 @@ It will classify a sentence whether it is Positive, Negative or Neutral with a s
 2) Neutral sentiment: (Compound Score > -0.05) and (Compound Score < 0.05)
 3) Negative sentiment: Compound Score <= -0.05
 
-![alt text](https://github.com/badboy3010/Sentimental-Analyser/blob/main/finalproject/Screenshot%20(824).png)
+![alt text](https://github.com/badboy3010/Sentimental-Analyser/blob/main/finalproject/Screenshot%20(k).png)
 
 
