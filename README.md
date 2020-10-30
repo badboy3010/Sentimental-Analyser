@@ -13,6 +13,9 @@ There are three inputs which we can provide one at a time:
 
 # Outputs
 It will classify a sentence whether it is Positive, Negative or Neutral with a score assigned to it.
+1) Positive sentiment: Compound Score >= 0.05
+2) Neutral sentiment: (Compound Score > -0.05) and (Compound Score < 0.05)
+3) Negative sentiment: Compound Score <= -0.05
 
 ![alt text](https://github.com/badboy3010/Sentimental-Analyser/blob/main/finalproject/Screenshot%20(824).png)
 ![alt text](https://github.com/badboy3010/Sentimental-Analyser/blob/main/finalproject/Screenshot%20(865).png)
