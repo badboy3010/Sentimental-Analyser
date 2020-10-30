@@ -1,4 +1,5 @@
 # Sentiment-Analysis
+Sentiment Analysis is the most common text classification tool that analyses phrases or reviews and tells whether the underlying sentiment is positive, negative or neutral.
 This tool is to predict the sentiment of the sentence whether it is Positive, Negative or Neutral for Hindi and English Language.
 
 ![alt text](https://github.com/badboy3010/Sentimental-Analyser/blob/main/finalproject/Screenshot%20(860).png)
