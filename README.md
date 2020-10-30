@@ -1,5 +1,6 @@
 # Sentiment-Analysis
-This tool will predict the sentiment of the sentence whether it is Positive, Negative or Neutral.
+This tool is to predict the sentiment of the sentence whether it is Positive, Negative or Neutral for Hindi and English Language.
+
 ![alt text](https://github.com/badboy3010/Sentimental-Analyser/blob/main/finalproject/Screenshot%20(860).png)
 
 # Inputs
@@ -9,5 +10,8 @@ There are three inputs which we can provide one at a time:
 3) Any text to classify (Hindi or English)
 
 # Outputs
+It will classify a sentence whether it is Positive, Negative or Neutral with a score assigned to it.
+
+![alt text](https://github.com/badboy3010/Sentimental-Analyser/blob/main/finalproject/Screenshot%20(824).png)
 ![alt text](https://github.com/badboy3010/Sentimental-Analyser/blob/main/finalproject/Screenshot%20(865).png)
 
