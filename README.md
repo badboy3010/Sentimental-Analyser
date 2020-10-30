@@ -1,6 +1,6 @@
 # Sentiment-Analysis
-![alt text](https://github.com/badboy3010/Sentimental-Analyser/blob/main/finalproject/Screenshot%20(860).png)
 This tool will predict the sentiment of the sentence whether it is Positive, Negative or Neutral.
+![alt text](https://github.com/badboy3010/Sentimental-Analyser/blob/main/finalproject/Screenshot%20(860).png)
 
 # Inputs
 There are three inputs which we can provide one at a time:
